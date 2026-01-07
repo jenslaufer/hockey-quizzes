@@ -1,6 +1,6 @@
 <template>
-  <div class="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 py-8 px-4">
-    <div class="max-w-7xl mx-auto">
+  <div class="bg-gradient-to-br from-slate-50 to-blue-50 py-8 px-4 print:bg-white print:py-0 print:px-0">
+    <div class="max-w-3xl mx-auto print:max-w-none print:w-[210mm]">
       <!-- Toolbar - nur am Bildschirm sichtbar -->
       <div class="print:hidden mb-6 flex justify-end gap-4">
         <button @click="exportToPDF"
@@ -15,12 +15,12 @@
 
       <!-- Anschreiben Container -->
       <div id="letter-content"
-        class="bg-white shadow-2xl rounded-lg overflow-hidden print:shadow-none print:rounded-none">
+        class="bg-white shadow-2xl rounded-xl overflow-hidden print:shadow-none print:rounded-none print:overflow-visible">
         <!-- Header mit Akzentfarbe -->
         <div class="bg-gradient-to-r from-blue-600 to-blue-700 h-2 print:hidden"></div>
 
         <!-- Hauptinhalt -->
-        <div class="p-6 print:p-16">
+        <div class="p-8 print:px-[16mm] print:pt-[14mm] print:pb-[18mm]">
           <!-- Absender -->
           <div class="mb-12 print:mb-16">
             <div class="text-gray-600 space-y-1 text-sm ">
@@ -43,9 +43,9 @@
           </div>
 
           <!-- Datum und Betreff -->
-          <div class="mt-8 mb-14">
-            <p class="text-gray-600 text-sm mb-13">{{ currentDate }}</p>
-            <h1 class="text-2xl font-bold text-gray-900 mb-2">
+          <div class="mt-8 mb-8 print:mt-6 print:mb-6">
+            <p class="text-gray-600 text-sm mb-4 print:mb-3">{{ currentDate }}</p>
+            <h1 class="text-2xl font-bold text-gray-900 mb-2 print:text-[15pt]">
               Bewerbung als Data Management Specialist (m/w/d)
             </h1>
             <p class="text-gray-600">Stellen-ID: 2025_1175_02</p>
@@ -117,7 +117,7 @@
 
             <!-- Grußformel -->
             <div class="mt-12">
-              <p class="mb-14">Mit freundlichen Grüßen</p>
+              <p class="mb-10 print:mb-6">Mit freundlichen Grüßen</p>
               <p class="font-medium text-gray-900">Jens Laufer</p>
             </div>
           </div>
@@ -167,8 +167,19 @@ const exportToPDF = () => {
     background: white;
   }
 
+  html,
+  body {
+    height: auto !important;
+  }
+
+  /* Verhindert, dass der äußere Screen-Wrapper Druckhöhe erzwingt */
+  #letter-content {
+    margin: 0 !important;
+  }
+
   @page {
-    margin: 1cm;
+    /* Etwas mehr Luft unten, damit es bei Browser-PDFs nicht "klebt" */
+    margin: 16mm 16mm 20mm 16mm;
     size: A4;
   }
 
