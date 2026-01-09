@@ -34,7 +34,11 @@ const router = createRouter({
         },
         {
             path: '/anschreiben',
-            component: () => import('./components/Bewerbungsanschreiben.vue')
+            component: () => import('./components/Anschreiben.vue')
+        },
+        {
+            path: '/lebenslauf',
+            component: () => import('./components/Cv.vue')
         }
     ]
 })
