@@ -429,7 +429,7 @@ const contactInfo = {
     name: "Jens Laufer",
     //photoUrl: "https://res.cloudinary.com/jenslaufer/image/upload/v1550571160/Jens_Laufer-13-1.jpg",
     //photoUrl: "https://res.cloudinary.com/jenslaufer/image/upload/w_1000,ar_1:1,c_fill,g_auto,e_art:hokusai/v1525766863/Jens_Laufer-3.jpg",
-    photoUrl: "https://res.cloudinary.com/jenslaufer/image/upload/c_thumb,w_200,g_face/v1525766863/Jens_Laufer-3.jpg",
+    photoUrl: "https://res.cloudinary.com/jenslaufer/image/upload/e_grayscale,c_thumb,w_200,g_face/v1525766863/Jens_Laufer-3.jpg",
     address: "Hörsteiner Str. 20a, 63791 Karlstein a. Main",
     phone: "+49 172 8443048",
     email: "jenslaufer@jenslaufer.com",
