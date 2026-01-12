@@ -48,10 +48,6 @@
         <button v-if="step <= 4"
             class="mt-12 px-8 py-4 rounded-xl text-3xl bg-red-500 hover:bg-red-700 text-white font-white font-semibold"
             @click="nextStep">{{ buttonLabel }}</button>
-
-        <p>{{ favoriteClub }}</p>
-        <p>{{ mostHatedClubs }}</p>
-        <p>{{ bestFansClubs }}</p>
     </div>
 </template>
 <script setup>
