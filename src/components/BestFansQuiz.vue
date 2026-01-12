@@ -9,7 +9,7 @@
                     'p-4 rounded-lg border-2 cursor-pointer transition-all duration-300 text-center h-20 flex items-center justify-center',
                     favoriteClub === club
                         ? 'border-green-500 bg-green-100 text-green-700 shadow-lg transform scale-105'
-                        : 'border-gray-300 bg-white hover:border-red-300 hover:bg-red-50 hover:shadow-md'
+                        : 'border-gray-300 bg-white hover:border-green-300 hover:bg-green-50 hover:shadow-md'
                 ]">
                     <span class="font-medium">{{ club }}</span>
                 </div>
@@ -21,7 +21,7 @@
                 <div v-for="club in shuffledClubs.filter(c => c !== favoriteClub)" :key="club"
                     @click="toggleHatedClub(club)" :class="[
                         'p-4 rounded-lg border-2 cursor-pointer transition-all duration-300 text-center h-20 flex items-center justify-center',
-                        mostHatedClub.includes(club)
+                        mostHatedClubs.includes(club)
                             ? 'border-red-500 bg-red-100 text-red-700 shadow-lg transform scale-105'
                             : 'border-gray-300 bg-white hover:border-red-300 hover:bg-red-50 hover:shadow-md'
                     ]">
@@ -30,7 +30,18 @@
             </div>
         </div>
         <div v-if="step === 3">
-            <p class="mt-12 text-2xl">Welche Clubs haben die besten Auswärtsfans?</p>
+            <p class="mt-12 text-2xl">Welcher Club hat die besten Auswärtsfans?</p>
+            <div class="mt-8 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 max-w-4xl">
+                <div v-for="club in shuffledClubs.filter(c => c !== favoriteClub)" :key="club"
+                    @click="toggleBestFansClub(club)" :class="[
+                        'p-4 rounded-lg border-2 cursor-pointer transition-all duration-300 text-center h-20 flex items-center justify-center',
+                        bestFansClubs.includes(club)
+                            ? 'border-blue-500 bg-blue-100 text-blue-700 shadow-lg transform scale-105'
+                            : 'border-gray-300 bg-white hover:border-blue-300 hover:bg-blue-50 hover:shadow-md'
+                    ]">
+                    <span class="font-medium">{{ club }}</span>
+                </div>
+            </div>
         </div>
         <div v-else>
         </div>
@@ -39,8 +50,8 @@
             @click="nextStep">{{ buttonLabel }}</button>
 
         <p>{{ favoriteClub }}</p>
-        <p>{{ mostHatedClub }}</p>
-        <p>{{ bestFansClub }}</p>
+        <p>{{ mostHatedClubs }}</p>
+        <p>{{ bestFansClubs }}</p>
     </div>
 </template>
 <script setup>
@@ -73,20 +84,20 @@ const bestFansClubs = ref([]);
 const shuffledClubs = ref([]);
 
 const toggleHatedClub = (club) => {
-    const index = mostHatedClub.value.indexOf(club);
+    const index = mostHatedClubs.value.indexOf(club);
     if (index > -1) {
-        mostHatedClub.value.splice(index, 1);
-    } else if (mostHatedClub.value.length < 3) {
-        mostHatedClub.value.push(club);
+        mostHatedClubs.value.splice(index, 1);
+    } else if (mostHatedClubs.value.length < 3) {
+        mostHatedClubs.value.push(club);
     }
 }
 
 const toggleBestFansClub = (club) => {
-    const index = bestFansClub.value.indexOf(club);
+    const index = bestFansClubs.value.indexOf(club);
     if (index > -1) {
-        bestFansClub.value.splice(index, 1);
-    } else if (bestFansClub.value.length < 3) {
-        bestFansClub.value.push(club);
+        bestFansClubs.value.splice(index, 1);
+    } else if (bestFansClubs.value.length < 3) {
+        bestFansClubs.value.push(club);
     }
 }
 
