@@ -97,9 +97,21 @@ const toggleBestFansClub = (club) => {
     }
 }
 
+const send = async () => {
+    const payload = {
+        favoriteClub: favoriteClub.value,
+        mostHatedClubs: mostHatedClubs.value,
+        bestFansClubs: bestFansClubs.value
+    };
+    console.log("Sending payload:", payload);
+};
+
 
 const nextStep = () => {
     step.value += 1;
+    if (step.value === 4) {
+        send();
+    }
 };
 
 onMounted(() => {
