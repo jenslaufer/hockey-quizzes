@@ -1,7 +1,7 @@
 <template>
     <div class="flex flex-col lg:h-screen items-center justify-center">
 
-        <h1 class="text-xl md:text-3xl lg:text-5xl font-bold">Lukas' Hockey Umfrage</h1>
+        <h1 class="text-xl md:text-3xl lg:text-5xl font-bold">Wer hat die besten Fans in der DEL?</h1>
         <div v-if="novelUser">
             <div v-if="step === 1">
                 <p class="mt-4 text-2xl text-center">Was ist dein Lieblingsclub?</p>
